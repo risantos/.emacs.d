@@ -1,6 +1,6 @@
 ##  My Emacs Configuration
 
-** Working in: **
+**Working in:**
 * GNU Emacs 24.5.1 (x86_64-unknown-linux-gnu, GTK+ Version 2.24.23)
 
 ### Dependencies
@@ -9,11 +9,11 @@ For the configuration to work properly, some exeternal dependencies are required
 
 ### Emacs plugins used
 
-** Bundled with Emacs
+**Bundled with Emacs**
 * `org-mode` -- [Note keeper, Organizer, Planner] (http://orgmode.org/)
 * `ido` -- [Interactively Do Things](http://www.emacswiki.org/emacs/InteractivelyDoThings)
 
-** Others
+**Others**
 Other plugins are installed using
 [`el-get`](https://github.com/dimitri/el-get).
 
