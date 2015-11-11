@@ -20,13 +20,13 @@
                ein
                helm
                helm-descbinds
+               jedi
                js2-mode
                magit
                magic-latex-buffer
                markdown-mode
                popup
                pydoc-info
-               remember
                yasnippet
                yaml-mode
                ))   

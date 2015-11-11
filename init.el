@@ -33,7 +33,7 @@
 (require 'auto-complete-settings) ;; Auto-complete
 (require 'python-settings) ;; Python mode
 (require 'latex-settings) ;; LaTeX and Auctex
-
+(require 'org-settings) ;; Org-mode
 
 ;; -- Modes and their settings -- ;;
 
@@ -43,16 +43,6 @@
 (fset 'describe-bindings 'helm-descbinds)
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-mini)
-
-;; Org
-(require 'org)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-(setq org-directory "/home/rafael/Dropbox/org")
-(setq org-default-notes-file "/home/rafael/Dropbox/org/notes.org")
-(setq org-agenda-files "/home/rafael/Dropbox/org/agenda")
-(setq org-mobile-directory "/home/rafael/Dropbox/Apps/MobileOrg")
 
 ;; Markdown
 (include-plugin "markdown-mode")
