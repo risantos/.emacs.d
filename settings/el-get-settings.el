@@ -18,10 +18,13 @@
                auto-complete
                color-theme-solarized
                ein
+               gnuplot-mode
                helm
                helm-descbinds
+               helm-pydoc
                jedi
                js2-mode
+               latex-preview-pane
                magit
                magic-latex-buffer
                markdown-mode

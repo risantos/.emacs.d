@@ -1,6 +1,6 @@
-;-----------;
-;;; LaTeX ;;;
-;-----------;
+;;------------------------;;
+;;  LaTeX Configurations  ;;
+;;------------------------;;
 
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
 (include-plugin "auctex")
@@ -22,7 +22,7 @@
 	    (tex-pdf-mode 1)
             (TeX-source-correlate-mode 1)))
 
-;;---  Magic-Latex-Buffer ---;;
+;;--- Magic-Latex-Buffer ---;;
 (require 'magic-latex-buffer)
 (add-hook 'latex-mode-hook 'magic-latex-buffer)
 
@@ -35,5 +35,4 @@
 
 
 (provide 'latex-settings)
-
 

@@ -1,7 +1,8 @@
 ;; Settings Files PATH
 (add-to-list 'load-path "~/.emacs.d/settings")
-;; Define plugins PATH [for el-get]
+;; Define plugins and themes PATH [for el-get]
 (setq plugin-path "~/.emacs.d/el-get/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; Import Main Setting Files
 (require 'custom-functions)
@@ -12,6 +13,9 @@
 ;;  Plugins + Modes  ;;
 ;;-------------------;;
 
+(require 'color-theme-solarized)
+(color-theme-solarized)
+
 (include-elget-plugin "popup") ;; popup
 (require 'popup)
 
@@ -21,8 +25,8 @@
 (include-plugin "request") ;; Request
 (require 'request)
 
-(require 'yasnippet) ;; yasnippet
-(yas-global-mode 1)
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (require 'ido) ;; Interactively-Do-Things
 (ido-mode 1)
@@ -30,8 +34,8 @@
 
 ;; -- Modes with separate settings-files -- ;;
 
-(require 'auto-complete-settings) ;; Auto-complete
-(require 'python-settings) ;; Python mode
+(require 'auto-complete-settings) ;; Auto-complete + yasnippet
+(require 'python-settings) ;; Python mode, ein, pydoc
 (require 'latex-settings) ;; LaTeX and Auctex
 (require 'org-settings) ;; Org-mode
 
@@ -40,6 +44,7 @@
 ;; Helm
 (require 'helm)
 (require 'helm-descbinds)
+(require 'helm-pydoc)
 (fset 'describe-bindings 'helm-descbinds)
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-mini)
@@ -48,13 +53,11 @@
 (include-plugin "markdown-mode")
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (append 
-       (list '("\\.text" . markdown-mode) 
-	     '("\\.md" . markdown-mode) 
-	     '("\\.markdown" . markdown-mode) 
-	     )
-       auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.\\(text\\|md\\|markdown\\)" . markdown-mode))
+
+;; Gnuplot-mode
+(require 'gnuplot)
+(add-to-list 'auto-mode-alist '("\\.\\(gp\\|gnuplot\\|plt\\)$" . gnuplot-mode))
 
 ;; Javascript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

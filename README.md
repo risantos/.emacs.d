@@ -3,15 +3,18 @@
 **Working in:**
 * GNU Emacs 24.5.1 (x86_64-unknown-linux-gnu, GTK+ Version 2.24.23)
 
+
 ### Dependencies
 
 For the configuration to work properly, some exeternal dependencies are required. Such as Git, Python3, pep8, pyflakes, jedi, IPython/Jupyter and TeX. (I will try to make a good requirement list in the future)
+
 
 ### Emacs plugins used
 
 **Bundled with Emacs**
 * `org-mode` -- [Note keeper, Organizer, Planner] (http://orgmode.org/)
 * `ido` -- [Interactively Do Things](http://www.emacswiki.org/emacs/InteractivelyDoThings)
+* `python.el` -- Python-mode
 
 **Others**
 Other plugins are installed using
@@ -23,13 +26,16 @@ The list of plugins from el-get is in `.emacs.d/settings/el-get-settings.el`, wh
 * `auto-complete` -- auto completion
 * `color-theme-solarized` -- the [solarized](http://ethanschoonover.com/solarized) color theme
 * `ein` -- [IPython notebook](http://ipython.org/notebook) plugin
+* `gnuplot-mode` -- Gnuplot integration in emacs buffer
 * `helm` -- [completion and selection](https://github.com/emacs-helm/helm) narrowing framework
 * `helm-descbinds` -- describe keybindings using helm
 * `jedi` -- general Python support
 * `js2-mode` -- Javascript mode [wiki](http://www.emacswiki.org/emacs/Js2Mode)
-* `magit` -- git plugin
-* `magic-latex-buffer` -- Graphic enhancment of Latex-mode
+* `latex-preview-pane` -- PDFLaTeX preview in side-buffer 
+* `magit` -- git "porcelain"
+* `magic-latex-buffer` -- Graphic enhancment of LaTeX-mode
 * `markdown-mode` -- support for [Markdown](http://daringfireball.net/projects/markdown/) files
 * `popup` -- visual popup (e.g., for auto completion)
 * `pydoc-info` -- Python documentation
+* `yasnippet` -- Snippets Plugin
 * `yaml-mode` -- support [YAML](https://github.com/yoshiki/yaml-mode) files
