@@ -22,6 +22,8 @@
 	    (tex-pdf-mode 1)
             (TeX-source-correlate-mode 1)))
 
+(latex-preview-pane-enable)
+
 ;;--- Magic-Latex-Buffer ---;;
 (require 'magic-latex-buffer)
 (add-hook 'latex-mode-hook 'magic-latex-buffer)
