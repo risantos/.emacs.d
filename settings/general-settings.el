@@ -20,14 +20,14 @@
 (setq org-default-notes-file "~/Dropbox/org/orgmode.org"
  initial-buffer-choice  org-default-notes-file) ;; Open/Show file at Start-up
 
-(menu-bar-mode 0) ;; toggle menu bar
+(menu-bar-mode 0) ;; Toggle menu bar
 
-(require 'tool-bar) ;; toggle toolbar
+(require 'tool-bar) ;; Toggle toolbar
 (tool-bar-mode 0)
 
-(if window-system (scroll-bar-mode 0)) ;; toggle scroll bar
+(if window-system (scroll-bar-mode 0)) ;; Toggle scroll bar
 
-(require 'mwheel) ;; toggle mouse wheel support for scrolling
+(require 'mwheel) ;; Toggle mouse wheel support for scrolling
 (mouse-wheel-mode 1)
 
 (blink-cursor-mode 0) ;; Toggle cursor blink
@@ -48,7 +48,7 @@
 (setq-default case-fold-search 1) ;; Ignore case when searching
 
 ;;--  Fill Collumn  +  Truncate Options  --;;
-(setq-default fill-column 70) ;; number of characters to fill column 
+(setq-default fill-column 70) ;; Number of characters to fill column 
 (setq-default truncate-lines nil) ;; Toggle truncate
 (setq truncate-partial-width-windows nil) ;; Truncate in partial-width windows
 
@@ -59,11 +59,11 @@
 (custom-set-frame-size)
 (add-hook 'before-make-frame-hook 'custom-set-frame-size)
 
-;; ;; Window modifications
-;; (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-;; (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-;; (global-set-key (kbd "S-C-<down>") 'shrink-window)
-;; (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+;; Window modifications
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 ;; Keybind [END/HOME] keys to [START/END] of buffers
 (global-set-key (kbd "<end>") 'end-of-buffer)
@@ -82,13 +82,7 @@
 
 (global-set-key [f4] 'goto-line) ;; Keybind [f4] key to [Go-to-line]
 
-;; ;; Highlight line with cursor
-;; (require 'highlight-current-line)
-;; (global-hl-line-mode 1)
-;; (setq highlight-current-line-globally t)
-;; (setq highlight-current-line-high-faces nil)
-;; (setq highlight-current-line-whole-line nil)
-;; (setq hl-line-face (quote highlight))
+(global-hl-line-mode 1) ;; Highlight line with cursor
 
 ;; Text decoration
 (require 'font-lock)
@@ -98,9 +92,9 @@
 (setq jit-lock-contextually 1)
 (setq jit-lock-stealth-verbose 1)
 
-(size-indication-mode 1) ;; if text has size information, change text size to reflect it
+(size-indication-mode 1) ;; If text has size information, change text size to reflect it
 
-(setq backup-inhibited t) ;; disable backup
-(setq auto-save-default nil) ;; disable auto save
+(setq backup-inhibited t) ;; Disable backup
+(setq auto-save-default nil) ;; Disable auto save
 
 (provide 'general-settings)

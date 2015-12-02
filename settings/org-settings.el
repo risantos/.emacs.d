@@ -12,9 +12,10 @@
 
 ;; Org PATHS
 (setq org-log-done t)
-(setq org-directory "/home/rafael/Dropbox/org")
+(setq org-directory "/home/rafael/Dropbox/org/")
 (setq org-default-notes-file "/home/rafael/Dropbox/org/notes.org")
-(setq org-agenda-files "/home/rafael/Dropbox/org/agenda")
+(setq org-agenda-directory "/home/rafael/Dropbox/org/agenda/")
+(setq org-user-agenda-files "/home/rafael/Dropbox/org/agenda/")
 (setq org-mobile-directory "/home/rafael/Dropbox/Apps/MobileOrg")
 
 
