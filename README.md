@@ -35,6 +35,7 @@ The list of plugins from el-get is in `.emacs.d/settings/el-get-settings.el`, wh
 * `magit` -- git "porcelain"
 * `magic-latex-buffer` -- Graphic enhancment of LaTeX-mode
 * `markdown-mode` -- support for [Markdown](http://daringfireball.net/projects/markdown/) files
+* `multiple-cursors` -- editing with [Multiple cursors](https://github.com/magnars/multiple-cursors.el)
 * `popup` -- visual popup (e.g., for auto completion)
 * `pydoc-info` -- Python documentation
 * `yasnippet` -- Snippets Plugin

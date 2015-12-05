@@ -13,6 +13,7 @@
 ;;  Plugins + Modes  ;;
 ;;-------------------;;
 
+(setq frame-background-mode 'dark)
 (require 'color-theme-solarized)
 (color-theme-solarized)
 
@@ -63,6 +64,14 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq-default js2-basic-offset 4)
 
+;; Multiple Cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) ; add cursor to each line of active region
+; add cursor based on keywords in the buffer
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;; YAML
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -76,3 +85,6 @@
 (load 
  (setq custom-file (expand-file-name "settings/custom.el" user-emacs-directory))
  'noerror)
+
+
+

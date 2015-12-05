@@ -28,6 +28,7 @@
                magit
                magic-latex-buffer
                markdown-mode
+               multiple-cursors
                popup
                pydoc-info
                yasnippet
