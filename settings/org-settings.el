@@ -16,8 +16,8 @@
 (setq org-default-notes-file "/home/rafael/Dropbox/org/notes.org")
 (setq org-agenda-directory "/home/rafael/Dropbox/org/agenda/")
 (setq org-user-agenda-files "/home/rafael/Dropbox/org/agenda/")
-(setq org-mobile-directory "/home/rafael/Dropbox/Apps/MobileOrg")
-
+(setq org-mobile-directory "/home/rafael/Dropbox/Apps/MobileOrg")  ;; MobileOrg Dropbox Sync
+(setq org-mobile-inbox-for-pull "/home/rafael/Dropbox/org/tomobile.org");; File where MobileOrg notes will be stored
 
 ;; ;; fix filladapt.el incompatibility
 ;; ;;(add-hook 'org-mode-hook 'turn-off-filladapt-mode)
