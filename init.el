@@ -1,90 +1,109 @@
-;; Settings Files PATH
+;;; init.el --- main config file
+;;; Commentary:
+;;; Code:
+
+;; Paths to Load:
 (add-to-list 'load-path "~/.emacs.d/settings")
-;; Define plugins and themes PATH [for el-get]
 (setq plugin-path "~/.emacs.d/el-get/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-;; Import Main Setting Files
+;; package.el + repositories:
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
+
+;; Main Settings Files:
 (require 'custom-functions)
 (require 'general-settings)
 (require 'el-get-settings)
+(package-initialize) ;; loading packages from package.el
 
-;;-------------------;;
-;;  Plugins + Modes  ;;
-;;-------------------;;
-
+;; Theme:
 (setq frame-background-mode 'dark)
-(require 'color-theme-solarized)
-(color-theme-solarized)
+(set-frame-parameter nil 'background-mode 'dark)
+(setq solarized-termcolors 256)
+(set-terminal-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
 
-(include-elget-plugin "popup") ;; popup
+;; Dependencies:
+
 (require 'popup)
-
-(include-plugin "websocket") ;; Websocket
 (require 'websocket)
-
-(include-plugin "request") ;; Request
 (require 'request)
 
-(require 'magit)
+;; Multiple Major Modes
+(require 'nxhtml)
+(require 'mumamo)
+(when (version<= "24.2" emacs-version)
+  (eval-after-load "mumamo"
+    '(setq mumamo-per-buffer-local-vars
+           (delq 'buffer-file-name mumamo-per-buffer-local-vars))))
+(custom-set-faces
+   '(mumamo-background-chunk-major
+     ((((class color) (min-colors 88) (background dark)) nil))))
+
+
+(require 'magit) ;; git porcelain
 (global-set-key (kbd "C-x g") 'magit-status)
 
 (require 'ido) ;; Interactively-Do-Things
 (ido-mode 1)
 
+(require 'flycheck)
+(global-flycheck-mode)
 
-;; -- Modes with separate settings-files -- ;;
+;; separate settings files
 
 (require 'auto-complete-settings) ;; Auto-complete + yasnippet
 (require 'python-settings) ;; Python mode, ein, pydoc
 (require 'latex-settings) ;; LaTeX and Auctex
 (require 'org-settings) ;; Org-mode
 
-;; -- Modes and their settings -- ;;
+;; Modes + their settings
 
-;; Helm
 (require 'helm)
+(require 'helm-config)
 (require 'helm-descbinds)
 (require 'helm-pydoc)
 (fset 'describe-bindings 'helm-descbinds)
-(helm-mode 1)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c h") 'helm-mini)
+(global-set-key (kbd "M-X") 'helm-mini)
+(global-set-key (kbd "C-x r b") 'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(helm-mode 1)
 
-;; Markdown
-(include-plugin "markdown-mode")
+(require 'markdown-mode)
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(text\\|md\\|markdown\\)" . markdown-mode))
 
-;; Gnuplot-mode
 (require 'gnuplot)
 (add-to-list 'auto-mode-alist '("\\.\\(gp\\|gnuplot\\|plt\\)$" . gnuplot-mode))
 
-;; Javascript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq-default js2-basic-offset 4)
 
-;; Multiple Cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) ; add cursor to each line of active region
-; add cursor based on keywords in the buffer
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this) ; add cursor based on keywords in the buffer
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;; YAML
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-hook 'yaml-mode-hook
           '(lambda ()
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
-;;=======================================================
-;; 'custom' changes in separate file
-;; (like custom-set-faces and custom-set-variables)
-(load 
+
+;;; Custom changes: (like custom-set-faces and custom-set-variables)
+(load
  (setq custom-file (expand-file-name "settings/custom.el" user-emacs-directory))
  'noerror)
-
-
-
+;;; init.el ends here

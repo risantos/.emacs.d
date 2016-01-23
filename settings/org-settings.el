@@ -1,10 +1,9 @@
-;;------------;;
-;;  Org-Mode  ;;
-;;------------;;
-
+;;; Org-Mode -- settings for org
+;;; Commentary:
+;;; Code:
 (require 'org)
 
-;; Setting global Keybindings
+;; Global Org-mode Keybindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
@@ -13,11 +12,11 @@
 ;; Org PATHS
 (setq org-log-done t)
 (setq org-directory "/home/rafael/Dropbox/org/")
-(setq org-default-notes-file "/home/rafael/Dropbox/org/notes.org")
-(setq org-agenda-directory "/home/rafael/Dropbox/org/agenda/")
-(setq org-user-agenda-files "/home/rafael/Dropbox/org/agenda/")
-(setq org-mobile-directory "/home/rafael/Dropbox/Apps/MobileOrg")  ;; MobileOrg Dropbox Sync
-(setq org-mobile-inbox-for-pull "/home/rafael/Dropbox/org/tomobile.org");; File where MobileOrg notes will be stored
+(setq org-default-notes-file "~/Dropbox/org/notes.org")
+(setq org-agenda-directory "~/Dropbox/org/agenda/")
+(setq org-user-agenda-files "~/Dropbox/org/agenda/")
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")  ;; MobileOrg Dropbox Sync
+(setq org-mobile-inbox-for-pull "~/Dropbox/org/tomobile.org");; File where MobileOrg notes will be stored
 
 ;; ;; fix filladapt.el incompatibility
 ;; ;;(add-hook 'org-mode-hook 'turn-off-filladapt-mode)
@@ -39,3 +38,4 @@
                       (define-key yas/keymap [tab] 'yas/next-field)))
 
 (provide 'org-settings)
+;;; org-settings.el ends here

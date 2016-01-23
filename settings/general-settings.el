@@ -1,9 +1,7 @@
-;;------------------------------;;
-;;  General or Global Settings  ;;
-;;------------------------------;;
+;;; general  --- GUI, options, stuff
+;;; Commentary:
+;;; Code:
 
-;; Set PATH, because ".bashrc" isn't loaded
-;; function from https://gist.github.com/jakemcc/3887459
 (defun set-exec-path-from-shell-PATH ()
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
   (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo -n $PATH'")))
@@ -11,14 +9,10 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (if window-system (set-exec-path-from-shell-PATH))
 
-;;----------------------;;
-;;  Environment Tweaks  ;;
-;;----------------------;;
 
-(setq current-language-environment "English") ;; Language
-(setq inhibit-startup-screen t) ;; Don't show the start-up Screen
-(setq org-default-notes-file "~/Dropbox/org/orgmode.org"
- initial-buffer-choice  org-default-notes-file) ;; Open/Show file at Start-up
+(setq current-language-environment "English") ;; Environment Language
+(setq inhibit-startup-screen t) ;; Disable start-up Screen
+(setq initial-buffer-choice "~/Dropbox/org/orgmode.org" ) ;; Start-up File
 
 (menu-bar-mode 0) ;; Toggle menu bar
 
@@ -34,32 +28,33 @@
 
 (transient-mark-mode 1) ;; Transient-Mark Mode (highlight selections)
 
+(global-hl-line-mode 1) ;; Highlight line with cursor
+
 (require 'paren) ;; Highlight parentheses when cursor is near
 (show-paren-mode 1)
+(electric-pair-mode 1) ;; Insert matching brackets when typed
 
 (setq require-final-newline 1) ;; Require final newlines when saved
 (setq next-line-add-newlines t) ;; Add new line when going to the next line
 
 (global-linum-mode t) ;; Display line number at left
 ;; Display (current line, current collumn) numbering in status bar
-(line-number-mode 1)
-(column-number-mode 1)
+(line-number-mode nil)
+(column-number-mode nil)
 
 (setq-default case-fold-search 1) ;; Ignore case when searching
 
-;;--  Fill Collumn  +  Truncate Options  --;;
 (setq-default fill-column 70) ;; Number of characters to fill column 
 (setq-default truncate-lines nil) ;; Toggle truncate
-(setq truncate-partial-width-windows nil) ;; Truncate in partial-width windows
+(setq truncate-partial-width-windows nil) ;; Truncate in partial-width windosw
 
-;;--  Default window width and height  --;;
-(defun custom-set-frame-size ()
-  (add-to-list 'default-frame-alist '(height . 50))
-  (add-to-list 'default-frame-alist '(width . 178)))
-(custom-set-frame-size)
-(add-hook 'before-make-frame-hook 'custom-set-frame-size)
+;; (defun custom-set-frame-size ()
+;;   (add-to-list 'default-frame-alist '(height . 50))
+;;   (add-to-list 'default-frame-alist '(width . 178)))
+;; (custom-set-frame-size)
+;; (add-hook 'before-make-frame-hook 'custom-set-frame-size)
 
-;; Window modifications
+;; Buffer window size modification keys
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
@@ -82,7 +77,6 @@
 
 (global-set-key [f4] 'goto-line) ;; Keybind [f4] key to [Go-to-line]
 
-(global-hl-line-mode 1) ;; Highlight line with cursor
 
 ;; Text decoration
 (require 'font-lock)
@@ -98,3 +92,4 @@
 (setq auto-save-default nil) ;; Disable auto save
 
 (provide 'general-settings)
+;;; general-settings.el ends here
