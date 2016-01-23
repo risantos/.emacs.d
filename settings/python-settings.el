@@ -42,7 +42,8 @@
               '("--python" "/usr/bin/python3")))
 (setq jedi:complete-on-dot t)
 
-
+(use-package 'py-yapf)
+(add-hook 'python-mode-hook 'py-yapf-enable-on-save)
 
 (add-to-list 'auto-mode-alist '("\\.\\(pyx\\|Sconstruct\\)" . python-mode))
 
