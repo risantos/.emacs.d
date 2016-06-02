@@ -37,10 +37,15 @@
 (setq require-final-newline 1) ;; Require final newlines when saved
 (setq next-line-add-newlines t) ;; Add new line when going to the next line
 
+
 (global-linum-mode t) ;; Display line number at left
-;; Display (current line, current collumn) numbering in status bar
-(line-number-mode nil)
-(column-number-mode nil)
+
+;; Mode Line Costumization
+(line-number-mode 0)
+(column-number-mode 0)
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+(size-indication-mode 0)
 
 (setq-default case-fold-search 1) ;; Ignore case when searching
 
@@ -77,16 +82,16 @@
 
 (global-set-key [f4] 'goto-line) ;; Keybind [f4] key to [Go-to-line]
 
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Text decoration
 (require 'font-lock)
-;;(setq font-lock-maximum-decoration 1)
+(setq font-lock-maximum-decoration 3)
 (global-font-lock-mode 1)
-(global-hi-lock-mode nil)
-(setq jit-lock-contextually 1)
-(setq jit-lock-stealth-verbose 1)
+(global-hi-lock-mode 1)
+(setq jit-lock-contextually t)
+(setq jit-lock-stealth-verbose t)
 
-(size-indication-mode 1) ;; If text has size information, change text size to reflect it
 
 (setq backup-inhibited t) ;; Disable backup
 (setq auto-save-default nil) ;; Disable auto save

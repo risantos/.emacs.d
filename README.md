@@ -16,7 +16,7 @@ $\LaTeX$: `texlive`, `texinfo`
 
 Python: `python3`, python3-# packages, where # = pip, numpy, scipy, matplotlib, pandas, simpy, nose.
 
-from `pip3`:  ipython[all], jupyter, jedi, epc, pylint, tornado, flake8, autopep8
+from `pip3`:  ipython[all], jupyter, jedi, epc, pylint, tornado, flake8, autopep8, yapf
 Also to regularly update my Python packages.
 
 
@@ -52,3 +52,4 @@ The list of plugins from el-get is in `.emacs.d/settings/el-get-settings.el`, wh
 * `pydoc-info` -- [Python documentation](https://bitbucket.org/jonwaltman/pydoc-info/)
 * `yasnippet` -- [Template system for Emacs](https://github.com/capitaomorte/yasnippet)
 * `yaml-mode` -- support [YAML](https://github.com/yoshiki/yaml-mode) files
+

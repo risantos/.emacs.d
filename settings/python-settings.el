@@ -3,6 +3,7 @@
 ;;; Code:
 (require 'python) ; python.el mode
 (setq py-python-command "/usr/bin/python3")
+(setq python-indent-offset 4)
 
 (setq
  python-shell-interpreter "ipython3"
@@ -16,15 +17,6 @@
    "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 
-;;  emacs IPython notebook
-(require 'ein) ;; 
-(use-package 'ein-mumamo)  ;; https://github.com/millejoh/ein-mumamo
- 
-(setq ein:complete-on-dot 1) ;; Start to autocomplete after a dot
-(setq ein:use-auto-complete-superpack t) ;; Use autocomplete
-
-(require 'pydoc-info) ;; pydoc info
-
 ;; Jedi - Python completion
 (require 'ctable) ;; required for epc
 (require 'deferred) ;; required for epc
@@ -32,18 +24,38 @@
 (require 'python-environment) ;; required for jedi
 (require 'jedi)
 ;(jedi:install-server) ;; use this first time using jedi
+;(autoload 'jedi:setup "jedi" nil t)
 (setq jedi:setup-keys t)
-(autoload 'jedi:setup "jedi" nil t)
 (add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'ein:connect-mode-hook 'ein:jedi-setup) ;jedi for ein
 (setq jedi:environment-root "jedi")
 (setq jedi:environment-virtualenv
       (append python-environment-virtualenv
               '("--python" "/usr/bin/python3")))
 (setq jedi:complete-on-dot t)
 
-(use-package 'py-yapf)
+
+;;  emacs IPython notebook
+(require 'ein) ;; 
+; (require 'ein-mumamo)  ;; https://github.com/millejoh/ein-mumamo
+
+(setq ein:use-auto-complete t)
+;(setq ein:use-auto-complete-superpack t) ;; Use autocomplete
+(setq ein:complete-on-dot t) ;; Start to autocomplete after a dot
+(setq ein:use-smartrep)
+;(setq ein:notebook-modes '(ein:notebook-mumamo-mode ein:notebook-plain-mode))
+(setq ein:notebook-modes '(ein:notebook-multilang-mode ein:notebook-plain-mode ))
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+;; (setq ein:worksheet-enable-undo yes)   ; no / yes / full (default is yes, full includes cells)
+
+
+(require 'pydoc-info) ;; pydoc info
+
+
+;; (require 'py-autopep8)
+;; (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(require 'py-yapf)
 (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+;; (add-hook 'ein:notebook-python-mode-hook 'py-yapf-enable-on-save)
 
 (add-to-list 'auto-mode-alist '("\\.\\(pyx\\|Sconstruct\\)" . python-mode))
 

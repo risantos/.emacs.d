@@ -23,8 +23,8 @@
                color-theme-solarized
                emacs-async
                flycheck
-               ein
-               gnuplot-mode
+               ;; ein
+               ;; gnuplot-mode
                helm
                helm-descbinds
                helm-pydoc
@@ -34,7 +34,7 @@
                magit
                markdown-mode
                multiple-cursors
-               nxhtml
+               ;; nxhtml
                popup
                pydoc-info
                python-environment
